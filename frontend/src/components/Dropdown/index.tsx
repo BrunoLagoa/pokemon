@@ -4,7 +4,17 @@ import chevron from '../../assets/images/chevronDownBlack.png';
 
 import * as S from './styled';
 
-const DropdownPage = ({ label, options }) => (
+interface IOptions {
+  value: string;
+  text: string;
+}
+
+interface IDropdownPage {
+  label: string;
+  options: IOptions[];
+}
+
+const DropdownPage = ({ label, options }: IDropdownPage) => (
   <S.DropdownWrapper>
     {label && <S.Label>{label}</S.Label>}
 

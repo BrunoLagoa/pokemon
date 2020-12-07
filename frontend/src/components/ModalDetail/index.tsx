@@ -1,15 +1,13 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 
 import Button from '../Button';
 import { useSlot } from '../../context/Slot';
 
 import closeImg from '../../assets/images/close.png';
-import pokeBallImg from '../../assets/images/pokeball.png';
 
 import * as S from './styled';
 
-const ModalDetailCapture = ({ data }) => {
-  const outSide = useRef();
+const ModalDetail = ({ data }: any) => {
   const { slot, setSlot } = useSlot();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -20,21 +18,27 @@ const ModalDetailCapture = ({ data }) => {
     }
   }, [data]);
 
-  const handleGetPokemon = useCallback(async () => {
-    setSlot([...slot, data]);
-    setIsOpen(false);
-  }, [data, setSlot, slot]);
+  const handleRemoveItem = useCallback(
+    async (id) => {
+      setSlot(slot.filter((item: { id: Number; }) => item.id !== id));
+      setIsOpen(false);
+    },
+    [setSlot, slot]
+  );
 
   return (
     <>
       {isOpen && (
-        <S.ModalWrapper ref={outSide}>
+        <S.ModalWrapper>
           <S.Modal>
             <S.Close>
               <Button icon={closeImg} onClick={() => setIsOpen(false)} />
             </S.Close>
             <S.CleanPokemon>
-              <Button icon={pokeBallImg} onClick={handleGetPokemon} />
+              <Button
+                text="Liberar Pokemon"
+                onClick={() => handleRemoveItem(data.id)}
+              />
             </S.CleanPokemon>
             <S.ModalContent>
               <img
@@ -84,4 +88,4 @@ const ModalDetailCapture = ({ data }) => {
   );
 };
 
-export default ModalDetailCapture;
+export default ModalDetail;

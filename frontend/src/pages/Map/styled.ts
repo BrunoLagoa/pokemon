@@ -56,15 +56,20 @@ export const Content = styled.div`
   }
 `;
 
-export const Search = styled.img.attrs((props) => ({
+interface IProps {
+  tooltip: string;
+  isSlotFull: boolean;
+}
+
+export const Search = styled.img.attrs<IProps>(props => ({
   src: `${
-    props.tootip === 'search'
+    props.tooltip === 'search'
       ? searchTooltipImg
       : props.isSlotFull
       ? tooltipErrorImg
       : searchingTooltipImg
   }`,
-}))`
+}))<IProps>`
   margin-bottom: 1rem;
   opacity: 0;
   /* animation: 0.5s ${fadeOut} ease both; */

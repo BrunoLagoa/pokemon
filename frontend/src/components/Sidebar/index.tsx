@@ -8,13 +8,26 @@ import { useSlot } from '../../context/Slot';
 
 import * as S from './styled';
 
+interface IItem {
+  id?: string | number | null;
+  sprites:
+  {
+    other:
+    {
+      [x: string]:
+      { front_default?: string; };
+    };
+  };
+  name?: string;
+}
+
 const Sidebar = () => {
   const { slot } = useSlot();
   const [data, setData] = useState({});
 
   const handleDetails = useCallback(
     async (id) => {
-      setData(slot.filter((item) => item.id === id)[0]);
+      setData(slot.filter((item: { id: any; }) => item.id === id)[0]);
     },
     [slot]
   );
@@ -24,7 +37,7 @@ const Sidebar = () => {
       <ModalDetail data={data} />
       <S.SideBarWrapper>
         <S.SideBarList>
-          {slot.map((item) => (
+          {slot.map((item: IItem) => (
             <S.SideBarItem key={item.id} onClick={() => handleDetails(item.id)}>
               <img
                 src={item.sprites.other['official-artwork'].front_default}
@@ -34,7 +47,7 @@ const Sidebar = () => {
           ))}
         </S.SideBarList>
 
-        <Button icon={iconPlus} />
+        <Button icon={iconPlus} onClick={() => {}}/>
       </S.SideBarWrapper>
     </>
   );

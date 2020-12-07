@@ -17,7 +17,7 @@ Fluxo e Funcionalidades da aplicação
 [ ] Para um Pokémon criado o usuário pode editar qualquer informação ou liberá-lo.
 [/] Sempre que liberar um Pokémon é possível capturar outro através da busca ou criar um customizado.
 [/] Caso as 6 posições estejam ocupadas o usuário não pode mais buscar nem criar novos Pokémons.
-[/] Responsividade para resoluções desktop e mobile. (Ex: 1280 x 720, 360 x 740)
+[x] Responsividade para resoluções desktop e mobile. (Ex: 1280 x 720, 360 x 740)
 
 
 [x] #2: Implementar o personagem para busca dos pokemons aleatório
@@ -30,7 +30,7 @@ Fluxo e Funcionalidades da aplicação
 [ ] node-sass
 [x] styled-components
 [x] prettier
-[ ] typescript
+[X] typescript
 [ ] react-hook-form
 [x] formik
 [x] yup

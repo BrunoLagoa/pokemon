@@ -40,7 +40,7 @@ const MapPage = () => {
       <Sidebar />
       <ModalDetailCapture isModalOpen={isModalOpen} data={data} />
       <S.Content>
-        <S.Search tootip={tooltip} isSlotFull={isSlotFull} />
+        <S.Search tooltip={tooltip} isSlotFull={isSlotFull} />
         <S.AshFront onClick={handleModalDetailCapture} />
       </S.Content>
     </S.MapWrapper>
